@@ -1,0 +1,96 @@
+{% load mathfilters %}
+<div class="m-5">
+  <div class="d-flex align-items-end justify-content-end mx-auto">
+    <div class="dropdown mb-3 mx-3">
+      <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
+        Filter By Category
+      </button>
+      <ul class="dropdown-menu">
+        <li><input checked class="form-check-input" id="all-category" type="checkbox" onchange=checkall("category") >Select All</li>
+        <li> &ensp;<input checked class="form-check-input category" type="checkbox" value="None" onchange=getCheckedBoxes()>No Category</li>
+        {% for category in categories %}
+          <li> &ensp;<input checked class="form-check-input category" type="checkbox" value="{{ category.category_id }}" onchange=getCheckedBoxes()>{{category.category_name}}</li>
+        {% endfor %}
+        <li><hr class="dropdown-divider"></li>
+        <li><a class="btn btn-primary" href="{% url 'category' %}">Manage Category</a></li>
+      </ul>
+    </div>
+  
+    <div class="dropdown mb-3 mx-3">
+      <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
+        Filter By Wallet
+      </button>
+      <ul class="dropdown-menu">
+        <li><input checked class="form-check-input" id="all-wallet" type="checkbox" onchange=checkall("wallet") >Select All</li>
+        {% for wallet in wallets %}
+          <li> &ensp;<input checked class="form-check-input wallet" type="checkbox" value="{{ wallet.wallet_id }}" onchange=getCheckedBoxes()>{{wallet.wallet_name}}</li>
+        {% endfor %}
+        <li><hr class="dropdown-divider"></li>
+        <li><a class="btn btn-primary" href="{% url 'wallet' %}">Manage Wallet</a></li>
+      </ul>
+    </div>
+  </div>
+
+  
+  <div class="row">
+    <div class="col me-3">
+<h2>Expenses</h2>
+<hr>
+{% if expenses %}
+  <table class="table mb-5">
+      <thead>
+        <tr>
+          <th scope="col">Date</th>
+          <th scope="col">Wallet</th>
+          <th scope="col">Category</th>
+          <th scope="col">Note</th>
+          <th scope="col">Amount</th>
+        </tr>
+      </thead>
+      <tbody>
+      {% for expense in expenses %}
+        <tr class="transaction category-{{ expense.category_id }} wallet-{{ expense.wallet_id }}">
+          <td><a href="{% url 'transaction_detail' expense.transaction_id %}">{{ expense.transaction_date|date:'d M Y' }}</a></td>
+          <td><a href="{% url 'transaction_detail' expense.transaction_id %}">{{ expense.wallet }}</a></td>
+          <td><a href="{% url 'transaction_detail' expense.transaction_id %}">{% if expense.category %}{{ expense.category }}{% else %}No Category{% endif %}</a></td>
+          <td><a href="{% url 'transaction_detail' expense.transaction_id %}">{{ expense.transaction_note }}</a></td>
+          <td><a href="{% url 'transaction_detail' expense.transaction_id %}">Rp. {{ expense.transaction_nominal|abs }}</a></td>
+        </tr>
+      {% endfor %}
+      </tbody>
+  </table>
+{% else %}
+  <p class="text-center">No expenses yet</p>
+{% endif %}
+</div>
+
+<div class="col ms-3">
+<h2>Incomes</h2>
+<hr>
+{% if incomes %}
+  <table class="table mb-5">
+      <thead>
+        <tr>
+          <th scope="col">Date</th>
+          <th scope="col">Wallet</th>
+          <th scope="col">Category</th>
+          <th scope="col">Note</th>
+          <th scope="col">Amount</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for income in incomes %}
+          <tr class="transaction category-{{ income.category_id }} wallet-{{ income.wallet_id }}">
+            <td><a href="{% url 'transaction_detail' income.transaction_id %}">{{ income.transaction_date|date:'d M Y' }}</a></td>
+            <td><a href="{% url 'transaction_detail' income.transaction_id %}">{{ income.wallet }}</a></td>
+            <td><a href="{% url 'transaction_detail' income.transaction_id %}">{% if income.category %}{{ income.category }}{% else %}No Category{% endif %}</a></td>
+            <td><a href="{% url 'transaction_detail' income.transaction_id %}">{{ income.transaction_note }}</a></td>
+            <td><a href="{% url 'transaction_detail' income.transaction_id %}">Rp. {{ income.transaction_nominal|abs }}</a></td>
+          </tr>
+        {% endfor %}
+      </tbody>
+  </table>
+{% else %}
+  <p class="text-center">No incomes yet</p>
+{% endif %}
+</div>

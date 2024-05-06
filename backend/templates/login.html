@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% block title %}Login{% endblock title %}Login
+{% block content %}
+  {% include "includes/navbarlog.html" with page="register" %}
+  <!-- content -->
+  <div class="container-md ">
+    <div class="container">
+        <div class="row align-items-center justify-content-center my-3">
+            <div class="col-6 text-center shadow-lg p-3 mb-5 bg-body rounded my-5">
+                <form action="{% url 'login' %}" method="POST">
+                    {% csrf_token %}
+                    <h1 class="mt-5">Login</h1>
+                    <div class="row justify-content-center my-4">
+                        <div class="col-8">
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="floatingInput" placeholder="Username" name="username" autocomplete="username" autocapitalize="none"  autofocus required>
+                                <label for="floatingInput">Username</label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="password" class="form-control" id="password" placeholder="Password" name="password" autocomplete="current-password" minlength="8" required >
+                                <label for="password1">Password</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row justify-content-center">
+                        <div class="col-8">
+                            <button type="submit" class="btn btn-primary w-100 mb-3">Login</button>
+                        </div>
+                    </div>
+                    <div class="row justify-content-center mb-5">
+                        <div class="col-8">
+                            No account? <a href="{% url 'register' %}" class="text-decoration-none fw-bold">Sign Up</a>                        </div>
+                        {% if message %}
+                            {% if message == "Password changed" %}                  
+                                <div class="text-center mt-2 alert alert-success col-8">
+                                    {{message}}
+                                </div>
+                            {% elif message == "Account deleted" %}
+                                <div class="text-center mt-2 alert alert-danger col-8">
+                                    {{message}}
+                                </div>
+                            {% else %}
+                                <div class="text-center mt-2 alert alert-danger col-8">
+                                    {{message}}
+                                </div>
+                            {% endif %}
+                        {% endif %}
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+  </div>
+  <script language='javascript' type='text/javascript'>
+    function check(input) {
+        if (input.value != document.getElementById('password1').value) {
+            input.setCustomValidity('Password Must be Matching.');
+        } else {
+            // input is valid -- reset the error message
+            input.setCustomValidity('');
+        }
+    }
+  </script>
+  {% include "includes/footerfixed.html" %}
+
+{% endblock content %}

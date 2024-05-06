@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load mathfilters %}
+{% block title %}Dashboard{% endblock title %}
+{% block content %}
+  {% include 'includes/navbar.html' with dashboard='active' %}
+
+  <div class="m-5">
+    <div class="mx-5">
+      <div class="row align-items-center">
+          <div class="col">
+              <div class="card">
+                  <div class="card-body">
+                      <strong style="display: block;">Welcome back, {{ user }}</strong>
+                      <small class="text-muted" style="display: block;">Saldo Anda</small>
+                      <h1 style="display: inline;"><strong>Rp. {{ saldo }}</strong></h1> 
+                  </div>
+              </div>
+          </div>
+          <div class="col text-center">
+              <div class="row align-items-center">
+                  <div class="col">
+                      <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#transactionModal">
+                        <i class="bi bi-cash"></i> Add Transaction
+                      </button>
+                  </div>
+                  <div class="col">
+                      <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#walletModal" ><i class="bi bi-wallet2"></i> Add Wallet</button>
+                  </div>
+                  <div class="col">
+                      <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#categoryModal"><i class="bi bi-collection"></i> Add Category </button>
+                  </div>
+                  <div class="col">
+                    <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#shoppinglistModal"><i class="bi bi-list-check"></i> Add Shopping List </button>
+                </div>
+              </div>
+          </div>
+      </div>
+    </div>
+  </div>
+  
+  {% include 'includes/modals/category.html' %}
+    {% include 'includes/modals/transaction.html' %}
+    {% include 'includes/modals/wallet.html' %}
+    {% include 'includes/modals/shoppinglist.html' %}
+  {% include 'includes/transaction.html' %}
+  {% include 'includes/footerfixed.html' %}
+  
+{% endblock content %}

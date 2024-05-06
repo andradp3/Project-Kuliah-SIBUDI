@@ -1,0 +1,38 @@
+version: '3'
+services:
+  database:
+    container_name: database
+    image: postgres
+    volumes:
+      - ./data/database:/var/lib/postgresql/data
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_DB: ${DB_NAME}
+
+  webserver:
+    container_name: webserver
+    volumes:
+      - static:/static
+    env_file:
+      - .env
+    build: .
+    restart: always
+    ports:
+      - "44445:8000"
+    depends_on:
+      - database
+  
+  nginx:
+    build: ./nginx
+    restart: always
+    volumes:
+      - static:/static
+    ports:
+      - "80:80"
+    depends_on:
+      - webserver
+
+volumes:
+  static:

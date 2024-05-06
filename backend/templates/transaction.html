@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% load mathfilters %}
+{% block title %}Transactions{% endblock title %}
+{% block content %}
+  {% include 'includes/navbar.html' with transaction='active' %}
+  {% include 'includes/modals/transaction.html' %}
+  {% include 'includes/transaction.html'  %}
+  {% include 'includes/footerfixed.html' %}
+{% endblock content %}

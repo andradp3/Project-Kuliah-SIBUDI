@@ -1,0 +1,133 @@
+{% extends 'base.html' %}
+{% block title %}Landing page{% endblock title %}
+{% block content %}
+  
+  <header class="pt-5">
+      <div class="container pt-4 pt-xl-5">
+          <div class="row pt-5">
+              <div class="col-md-8 text-center text-md-start mx-auto">
+                  <div class="text-center">
+                    <h1 class="display-4 fw-bold">SiBudi</h1>
+                    <h3 class=" fw-bold mb-3">Sistem Buku Keuangan Digital</h3>
+                    <p class="fs-5 text-muted mb-5">Pemanfaatan Teknologi Informasi berbasis Website sebagai Platform Money Management di Kalangan Mahasiswa</p>
+                    <div class="btn-group mb-5" role="group" aria-label="Basic outlined example">
+                        <a href="https://ipb.link/laporansibudi" target="_blank" class="btn btn-outline-primary btn-lg">Laporan Akhir</a>
+                        <a href="https://github.com/irfanalmsyah/projectBasisData" target="_blank" class="btn btn-outline-primary btn-lg">Github Repository</a>
+                        <a href="{% url 'login' %}" tar class="btn btn-primary btn-lg">Coba Sekarang</a>
+                      </div>
+                  </div>
+              </div>
+              <div class="col-12 col-lg-10 mx-auto">
+                  <div class="text-center position-relative"><img class="img-fluid" src="/static/1.png" style="width: 800px;"></div>
+              </div>
+          </div>
+      </div>
+  </header>
+  <section>
+      <div class="container py-4 py-xl-5">
+          <div class="row gy-4 row-cols-1 row-cols-md-2 row-cols-lg-3">
+              <div class="col">
+                  <div class="card border-light border-1 d-flex justify-content-center p-4">
+                      <div class="card-body">
+                          <div>
+                              <h4 class="fw-bold">Apa itu SiBudi?</h4>
+                              <p class="text-muted">SiBudi merupakan sebuah website pencatatan keuangan yang dibuat dalam rangka menyelesaikan permasalahan sulitnya proses pencatatan keuangan.</p>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="col">
+                  <div class="card border-light border-1 d-flex justify-content-center p-4">
+                      <div class="card-body">
+                          <div>
+                              <h4 class="fw-bold">Apa fitur SiBudi?</h4>
+                              <p class="text-muted">SiBudi memiliki berbagai fitur yang dapat dimanfaatkan seperti mencatat pemasukan dan pengeluaran, mengkategorikan jenis-jenis pengeluaran dan pemasukan agar menjadi lebih personal serta memungkinkan kita juga untuk membuat lebih dari satu wallet yang bisa kita manajemen sesuai dengan peruntukannya pada masing-masing wallet.</p>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="col">
+                  <div class="card border-light border-1 d-flex justify-content-center p-4">
+                      <div class="card-body">
+                          <div>
+                              <h4 class="fw-bold">Apa teknologi di balik SiBudi?</h4>
+                              <p class="text-muted">Erat netus est hendrerit, nullam et quis ad cras porttitor iaculis. Bibendum vulputate cras aenean.</p>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </section>
+  <section>
+      <div class="container py-4 py-xl-5">
+          <div class="row">
+              <div class="col-md-6">
+                  <h3 class="display-6 fw-bold ">Fitur dari SiBudi</h3>
+              </div>
+          </div>
+          <div class="row gy-4 gy-md-0">
+              <div class="col-md-6 d-flex d-sm-flex d-md-flex justify-content-center align-items-center justify-content-md-start align-items-md-center justify-content-xl-center">
+                  <div>
+                      <div class="row gy-2 row-cols-1 row-cols-sm-2">
+                          <div class="col text-center text-md-start">
+                              <div class="d-flex justify-content-center align-items-center justify-content-md-start"><i class="bi bi-cash text-primary fs-4 me-2"></i>
+                                  <h5 class="fw-bold mb-0 ms-2">Transactions</h5>
+                              </div>
+                              <p class="text-muted my-3">Pencatatan transaksi sehari-hari secara detail.</p>
+                          </div>
+                          <div class="col text-center text-md-start">
+                            <div class="d-flex justify-content-center align-items-center justify-content-md-start"><i class="bi bi-wallet2 text-primary fs-4 me-2"></i>
+                                <h5 class="fw-bold mb-0 ms-2">Wallets</h5>
+                            </div>
+                              <p class="text-muted my-3">Terdapat pilihan untuk menciptakan dompet yang berbeda.</p>
+                          </div>
+                          <div class="col text-center text-md-start">
+                            <div class="d-flex justify-content-center align-items-center justify-content-md-start"><i class="bi bi-collection text-primary fs-4 me-2"></i>
+                                <h5 class="fw-bold mb-0 ms-2">Categories</h5>
+                            </div>
+                              <p class="text-muted my-3">Penggunaan kategori untuk membantu pencatatan transaksi.</p>
+                          </div>
+                          <div class="col text-center text-md-start">
+                            <div class="d-flex justify-content-center align-items-center justify-content-md-start"><i class="bi bi-list-check text-primary fs-4 me-2"></i>
+                                <h5 class="fw-bold mb-0 ms-2">Shopping Lists</h5>
+                            </div>
+                              <p class="text-muted my-3">Sebuah note untuk membantu kamu mencatat barang sehari-hari yang ingin dibeli.</p>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="col-md-6 order-first order-md-last">
+                  <div><img class="rounded img-fluid w-100 fit-cover" style="min-height: 300px;" src="/static/2.png"></div>
+              </div>
+          </div>
+      </div>
+  </section>
+  <section>
+    <div class="container pt-4 pt-xl-5">
+        <div class="row pt-5">
+            <div class="col-md-8 text-center text-md-start mx-auto">
+                <div class="text-center mb-5">
+                  <h1 class="display-4 fw-bold">Entity Relational Diagram</h1>
+            </div>
+            <div class="col-12 col-lg-10 mx-auto">
+                <div class="text-center position-relative mb-3"><img class="img-fluid" src="/static/entityrelationaldiagram.png" style="width: 800px;"></div>
+            </div>
+        </div>
+    </div>
+  </section>
+  <section>
+    <div class="container pt-4 pt-xl-5 mb-5">
+        <div class="row pt-5">
+            <div class="col-md-8 text-center text-md-start mx-auto">
+                <div class="text-center mb-5">
+                  <h1 class="display-4 fw-bold">Schematic Diagram</h1>
+            </div>
+            <div class="col-12 col-lg-10 mx-auto">
+                <div class="text-center position-relative mb-5"><img class="img-fluid" src="/static/schematicdiagram.png" style="width: 800px;"></div>
+            </div>
+        </div>
+    </div>
+  </section>
+  {% include 'includes/footer.html' %}
+{% endblock content %}
